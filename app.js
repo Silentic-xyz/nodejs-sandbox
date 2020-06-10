@@ -13,4 +13,4 @@ app.post('/', (req, res) => {
   res.send(out);
 });
 
-app.listen(3002);
+app.listen( process.env.PORT || 3000 );
