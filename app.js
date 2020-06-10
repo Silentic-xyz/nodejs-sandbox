@@ -1,13 +1,13 @@
 const express = require('express');
 const bp = require('body-parser');
-const vm2 = require("vm2");
+const {VM} = require("vm2");
 const app = express();
 
 app.use(bp.json());
 
 app.post('/', (req, res) => {
   let code = req.body.code;
-  let output = new vm2().run(code);
+  let output = new VM().run(code);
   res.send(output);  
 });
 
