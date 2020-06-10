@@ -10,8 +10,13 @@ app.post('/', (req, res) => {
   console.log(req.body);
   let vm = new VM();
   vm.timeout = 1000*5;
-  let out = vm.run(code);
-  res.send(out);
+  try{
+    out = vm.run(code);
+    res.send(out);
+  } catch(err) {
+    out = err.toString();
+    res.send(out);
+  }
 });
 app.get('/', (req, res) => {
   res.send(`<h1>Silentic.xyz API : Node.JS Sandbox</h1>
